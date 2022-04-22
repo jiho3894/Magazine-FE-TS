@@ -3,18 +3,20 @@ import axios from "axios";
 // getCookie 함수 불러오기
 // import { getCookie } from "../shared/Cookie";
 
+let token = sessionStorage.getItem("token");
+const key = import.meta.env.VITE_KEY;
+
 // 인스턴스 생성
 const instance = axios.create({
   // baseURL을 키값으로 내장자바스크립트 객체(process.env)에서
   // REACT_APP_MAGAZINE_API_BASE_URL 접근
   //    baseURL : process.env.REACT_APP_MAGAZINE_API_BASE_URL,
-  /* baseURL: "http://3.34.130.45:8082", */
-  /* baseURL: "http://3.38.106.41", */
-  baseURL: "http://3.37.87.193",
+  baseURL: key,
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json,",
     "Access-Control-Allow-Origin": "*",
+    Authorization: `${token}`,
   },
 });
 
